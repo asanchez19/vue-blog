@@ -35,37 +35,90 @@
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended",
-      "@vue/prettier"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {},
-    "overrides": [
-      {
-        "files": [
-          "**/__tests__/*.{j,t}s?(x)",
-          "**/tests/unit/**/*.spec.{j,t}s?(x)"
-        ],
-        "env": {
-          "jest": true
-        }
-      }
-    ]
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ],
-  "jest": {
-    "preset": "@vue/cli-plugin-unit-jest"
+
+		"root": true,
+		"env": {
+			"node": true
+		},
+		"extends": [
+			"plugin:vue/recommended",
+			"@vue/prettier"
+		],
+		"globals": {
+			"createApplication": "readonly",
+			"createLocalVue": "readonly",
+			"factory": "readonly",
+			"expect": "readonly",
+			"jest": "readonly",
+			"mount": "readonly",
+			"shallowMount": "readonly",
+			"makeStore": "readonly"
+		},
+		"rules": {
+			"linebreak-style": [
+				"error",
+				"unix"
+			],
+			"vue/prop-name-casing": [
+				"off"
+			],
+			"vue/no-boolean-default": [
+				"error",
+				"default-false"
+			],
+			"vue/no-restricted-syntax": [
+				"error"
+			],
+			"vue/order-in-components": [
+				"error",
+				{
+					"order": [
+						"comments",
+						"components",
+						"computed",
+						"delimiters",
+						"directives",
+						"el",
+						"extends",
+						"filters",
+						"functional",
+						"inheritAttrs",
+						"methods",
+						"mixins",
+						"model",
+						"name",
+						"parent",
+						"props",
+						"propsData",
+						"watch",
+						"LIFECYCLE_HOOKS",
+						"data",
+						"render",
+						"renderError",
+						"template"
+					]
+				}
+			],
+			"vue/require-direct-export": [
+				"error"
+			],
+			"vue/v-on-function-call": [
+				"error"
+			],
+			"vue/valid-v-on": [
+				"error",
+				{
+					"modifiers": [
+						"listbox"
+					]
+				}
+			],
+			"no-console": [
+				"off"
+			]
+		},
+		"parserOptions": {
+			"parser": "babel-eslint"
+		}
   }
 }
