@@ -3,13 +3,25 @@
 		<div class="auth-left"></div>
 		<div class="auth-right">
 			<b-icon-star-half class="h1 my-5" />
-			<button class="btn-facebook">Sign in with Facebook</button>
+			<button v-if="!authenticated" @click="login">
+				Sign in with Google
+			</button>
 		</div>
 	</div>
 </template>
 
 <script>
-export default {}
+import Firebase from '../app/Firebase.js'
+
+export default {
+	/**
+	 * The component's name used for debugging.
+	 *
+	 * @type {String}
+	 */
+	name: 'Login',
+
+}
 </script>
 
 <style></style>
