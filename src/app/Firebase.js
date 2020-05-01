@@ -24,29 +24,15 @@ export default {
 	 *
 	 * @return {void}
 	 */
-	login() {
+	async login() {
 		const provider = new firebase.auth.GoogleAuthProvider()
-		firebase
-			.auth()
-			.signInWithPopup(provider)
-			.then(function(result) {
-				console.log(result)
-			})
-			.catch(function(error) {
-				console.log(error)
-			})
+		await firebase.auth().signInWithPopup(provider)
 	},
 
 	/**
 	 * Attempt to logout from Google.
 	 */
-	logout() {
-		firebase
-			.auth()
-			.signOut()
-			.then(function() {})
-			.catch(function(error) {
-				console.log(error)
-			})
+	async logout() {
+		await firebase.auth().signOut()
 	},
 }
