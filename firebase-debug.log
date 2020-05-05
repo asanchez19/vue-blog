@@ -1,0 +1,37 @@
+[debug] [2020-04-30T23:18:34.167Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T23:18:34.168Z] Command:       /usr/local/bin/node /Users/alejandrosanchez/.npm-global/bin/firebase apps:create --project vue-blog-main1
+[debug] [2020-04-30T23:18:34.169Z] CLI Version:   8.2.0
+[debug] [2020-04-30T23:18:34.169Z] Platform:      darwin
+[debug] [2020-04-30T23:18:34.169Z] Node Version:  v12.13.1
+[debug] [2020-04-30T23:18:34.170Z] Time:          Thu Apr 30 2020 17:18:34 GMT-0600 (Central Standard Time)
+[debug] [2020-04-30T23:18:34.170Z] ----------------------------------------------------------------------
+[debug] [2020-04-30T23:18:34.170Z] 
+[debug] [2020-04-30T23:18:34.176Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2020-04-30T23:18:34.177Z] > authorizing via signed-in user
+[info] Create your WEB app in project vue-blog-main1:
+[debug] [2020-04-30T23:18:43.451Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2020-04-30T23:18:43.452Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2020-04-30T23:18:43.832Z] <<< HTTP RESPONSE 400 {"content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 30 Apr 2020 23:18:43 GMT","server":"scaffolding on HTTPServer2","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T23:18:43.833Z] >>> HTTP REQUEST POST https://firebase.googleapis.com/v1beta1/projects/vue-blog-main1/webApps  
+ {"displayName":"blog-main"}
+[debug] [2020-04-30T23:18:44.127Z] <<< HTTP RESPONSE 401 {"www-authenticate":"Bearer realm=\"https://accounts.google.com/\", error=\"invalid_token\"","vary":"X-Origin, Referer, Origin,Accept-Encoding","content-type":"application/json; charset=UTF-8","date":"Thu, 30 Apr 2020 23:18:44 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-Q050=\":443\"; ma=2592000,h3-Q049=\":443\"; ma=2592000,h3-Q048=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2020-04-30T23:18:44.127Z] <<< HTTP RESPONSE BODY {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2020-04-30T23:18:44.129Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2020-04-30T23:18:44.341Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at module.exports (/Users/alejandrosanchez/.npm-global/lib/node_modules/firebase-tools/lib/responseToError.js:38:12)
+    at Request._callback (/Users/alejandrosanchez/.npm-global/lib/node_modules/firebase-tools/lib/api.js:41:35)
+    at Request.self.callback (/Users/alejandrosanchez/.npm-global/lib/node_modules/firebase-tools/node_modules/request/request.js:185:22)
+    at Request.emit (events.js:210:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at Request.<anonymous> (/Users/alejandrosanchez/.npm-global/lib/node_modules/firebase-tools/node_modules/request/request.js:1154:10)
+    at Request.emit (events.js:210:5)
+    at Request.EventEmitter.emit (domain.js:475:20)
+    at IncomingMessage.<anonymous> (/Users/alejandrosanchez/.npm-global/lib/node_modules/firebase-tools/node_modules/request/request.js:1076:12)
+    at Object.onceWrapper (events.js:299:28)
+    at IncomingMessage.emit (events.js:215:7)
+    at IncomingMessage.EventEmitter.emit (domain.js:475:20)
+    at endReadableNT (_stream_readable.js:1184:12)
+    at processTicksAndRejections (internal/process/task_queues.js:80:21)
+[error] 
+[error] Error: Failed to create Web app for project vue-blog-main1. See firebase-debug.log for more info.
