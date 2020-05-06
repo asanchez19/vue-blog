@@ -1,7 +1,10 @@
 <template>
-	<div>
-		Hola {{ user.data.displayName }}
-		<button @click="logout">Logout</button>
+	<div class="auth">
+		<div class="auth-left"></div>
+		<div class="auth-right">
+			<b-icon-star-half class="h1 my-5" />
+			<button @click="login">Sign in with Google</button>
+		</div>
 	</div>
 </template>
 
@@ -15,16 +18,11 @@ export default {
 	 * @type {Object}
 	 */
 	methods: {
-		/**
-		 * Handle the logout event click.
-		 *
-		 * @return {void}
-		 */
-		async logout() {
-			await Firebase.logout()
+		async login() {
+			await Firebase.login()
 
-			if (!this.user.loggedIn) {
-				this.$router.push({ name: 'Login' })
+			if (this.user.loggedIn) {
+				this.$router.push({ name: 'Home' })
 			}
 		},
 	},
