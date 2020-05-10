@@ -1,63 +1,25 @@
 <template>
 	<div>
-		Hola {{ user.data.displayName }}
-		<button @click="logout">Logout</button>
+		<Logout />
 	</div>
 </template>
 
 <script>
-import Firebase from '../app/Firebase'
-
+import Logout from '../components/Logout.vue'
 export default {
 	/**
-	 * The component's local methods.
+	 * The component's registered child components.
 	 *
 	 * @type {Object}
 	 */
-	methods: {
-		/**
-		 * Handle the logout event click.
-		 *
-		 * @return {void}
-		 */
-		async logout() {
-			await Firebase.logout()
-
-			if (!this.user.loggedIn) {
-				this.$router.push({ name: 'Login' })
-			}
-		},
+	components: {
+		Logout,
 	},
-
 	/**
-	 * The component's mounted lifecycle hook.
+	 * The component's name used for debugging.
 	 *
-	 * @return {void}
+	 * @type {String}
 	 */
-	mounted() {
-		Firebase.auth.onAuthStateChanged(user => {
-			if (!user) {
-				this.user.loggedIn = false
-				return (this.user.data = {})
-			}
-
-			this.user.loggedIn = true
-			this.user.data = user
-		})
-	},
-
-	/**
-	 * Get the component's initial state.
-	 *
-	 * @return {Object}
-	 */
-	data() {
-		return {
-			user: {
-				loggedIn: false,
-				data: {},
-			},
-		}
-	},
+	name: 'Home',
 }
 </script>
