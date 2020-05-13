@@ -1,7 +1,7 @@
 <template>
-	<div>
-		Hola {{ user.data.displayName }}
-		<button @click="logout">Logout</button>
+	<div class="text-nowrap">
+		<h4>{{ user.data.displayName }}'s blog</h4>
+		<a href.prevent="#" @click="logout">Cerrar sesión</a>
 	</div>
 </template>
 
@@ -66,6 +66,5 @@ export default {
 			},
 		}
 	},
-
 }
 </script>
