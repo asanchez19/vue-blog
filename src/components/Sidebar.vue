@@ -3,7 +3,9 @@
 		<Logout />
 		<ul class="nav nav-pills nav-stacked mt-5">
 			<li class="active">
-				<a href="#"><b-icon-plus-circle /> Crear</a>
+				<a href="#" @click.prevent="onCreate"
+					><b-icon-plus-circle /> Crear</a
+				>
 			</li>
 		</ul>
 		<br />
@@ -21,6 +23,19 @@ export default {
 	 */
 	components: {
 		Logout,
+	},
+
+	/**
+	 * The component's local methods.
+	 *
+	 * @type {Object}
+	 */
+	methods: {
+		onCreate() {
+			this.$router.push({
+				name: 'home.create',
+			})
+		},
 	},
 
 	/**

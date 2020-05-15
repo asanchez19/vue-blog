@@ -1,5 +1,6 @@
-import * as firebase from 'firebase/app'
 import 'firebase/auth'
+import 'firebase/firestore'
+import * as firebase from 'firebase/app'
 
 const firebaseConfig = {
 	apiKey: 'AIzaSyBBg853J5PWJ_TB16U3ellUnvnUYJiLM2g',
@@ -18,6 +19,11 @@ export default {
 	 * The auth token.
 	 */
 	auth: firebase.auth(),
+
+	/**
+	 * The database config.
+	 */
+	db: firebase.firestore(),
 
 	/**
 	 * Attempt to login in Google.

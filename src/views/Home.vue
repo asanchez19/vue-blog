@@ -7,29 +7,16 @@
 				<div class="col-sm-9">
 					<h4><small>MIS POSTS</small></h4>
 					<hr />
-					<h2>I Love Food</h2>
-					<h5>
-						<span class="glyphicon glyphicon-time"></span> Post by
-						Jane Dane, Sep 27, 2015.
-					</h5>
-					<h5>
-						<span class="label label-danger">Food</span>
-						<span class="label label-primary">Ipsum</span>
-					</h5>
-					<br />
-					<p>
-						Food is my passion. Lorem ipsum dolor sit amet,
-						consectetur adipiscing elit, sed do eiusmod tempor
-						incididunt ut labore et dolore magna aliqua. Ut enim ad
-						minim veniam, quis nostrud exercitation ullamco laboris
-						nisi ut aliquip ex ea commodo consequat. Excepteur sint
-						occaecat cupidatat non proident, sunt in culpa qui
-						officia deserunt mollit anim id est laborum consectetur
-						adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut
-						aliquip ex ea commodo consequat.
-					</p>
+					<div v-for="post in posts" :key="post.date">
+						<h2 v-html="post.title"></h2>
+						<b-icon-trash @click.prevent="onDelete(post.id)" />
+						<h5>
+							<span class="glyphicon glyphicon-time"></span> Post
+							by {{ post.displayName }}.
+						</h5>
+						<br />
+						<p v-html="post.post"></p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -38,9 +25,9 @@
 </template>
 
 <script>
+import firebase from '../app/Firebase.js'
 import Footer from '../components/Footer.vue'
 import Sidebar from '../components/Sidebar.vue'
-
 export default {
 	/**
 	 * The component's registered child components.
@@ -52,10 +39,55 @@ export default {
 		Sidebar,
 	},
 	/**
+	 * The component's local methods.
+	 *
+	 * @type {Object}
+	 */
+	methods: {
+		/**
+		 * Handle the delete click event.
+		 *
+		 * @param {Number} id
+		 * @return {void}
+		 */
+		onDelete(id) {
+			firebase.db
+				.collection('posts')
+				.doc(id)
+				.delete()
+		},
+	},
+	/**
 	 * The component's name used for debugging.
 	 *
 	 * @type {String}
 	 */
 	name: 'Home',
+
+	/**
+	 * The component's before create lifecycle hook.
+	 *
+	 * @return {void}
+	 */
+	created() {
+		firebase.db
+			.collection('posts')
+			.get()
+			.then(querySnapshot => {
+				this.posts = querySnapshot.docs.map(doc => {
+					return { ...doc.data(), id: doc.id }
+				})
+			})
+	},
+	/**
+	 * Get the component's initial state.
+	 *
+	 * @return {Object}
+	 */
+	data() {
+		return {
+			posts: [],
+		}
+	},
 }
 </script>
