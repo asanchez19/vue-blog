@@ -1,7 +1,10 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
 
+//General layout
+
+@import './general.scss';
 
 // components
 
-@import 'components/login.scss'
+@import 'components/login.scss';
