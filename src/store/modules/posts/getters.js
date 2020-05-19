@@ -3,4 +3,14 @@
  *
  * @author Alejandro Sanchez <rasso92@gmail.com>
  */
-export default {}
+export default {
+	/**
+	 * Get the total number of records.
+	 *
+	 * @param {Object} state
+	 * @return {Number}
+	 */
+	getTotalRecords(state) {
+		return state.ids.length
+	},
+}

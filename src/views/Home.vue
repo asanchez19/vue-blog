@@ -5,7 +5,9 @@
 				<sidebar />
 
 				<div class="col-sm-9">
-					<h4><small>MIS POSTS</small></h4>
+					<h4>
+						<small>MIS {{ count }} POSTS.</small>
+					</h4>
 					<hr />
 					<div v-for="post in posts" :key="post.date">
 						<h2 v-html="post.title"></h2>
@@ -25,7 +27,7 @@
 </template>
 
 <script>
-import firebase from '../app/Firebase.js'
+import { mapActions, mapGetters } from 'vuex'
 import Footer from '../components/Footer.vue'
 import Sidebar from '../components/Sidebar.vue'
 
@@ -41,6 +43,18 @@ export default {
 	},
 
 	/**
+	 * The component's computed properties.
+	 *
+	 * @type {Object}
+	 */
+	computed: {
+		...mapGetters({
+			count: 'posts/getTotalRecords',
+			posts: 'posts',
+		}),
+	},
+
+	/**
 	 * The component's local methods.
 	 *
 	 * @type {Object}
@@ -52,14 +66,11 @@ export default {
 		 * @param {Number} id
 		 * @return {void}
 		 */
-		onDelete(id) {
-			console.log(id)
-
-			firebase.db
-				.collection('posts')
-				.doc(id)
-				.delete()
+		async onDelete(id) {
+			await this.deletePost(id)
 		},
+
+		...mapActions({ fetchPosts: 'posts/get', deletePost: 'posts/remove' }),
 	},
 
 	/**
@@ -75,25 +86,7 @@ export default {
 	 * @return {void}
 	 */
 	created() {
-		firebase.db
-			.collection('posts')
-			.get()
-			.then(querySnapshot => {
-				this.posts = querySnapshot.docs.map(doc => {
-					return { ...doc.data(), id: doc.id }
-				})
-			})
-	},
-
-	/**
-	 * Get the component's initial state.
-	 *
-	 * @return {Object}
-	 */
-	data() {
-		return {
-			posts: [],
-		}
+		this.fetchPosts()
 	},
 }
 </script>
