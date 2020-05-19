@@ -1,5 +1,3 @@
-import { mapToArray } from './helpers/getters'
-
 /**
  * Global store getters.
  *
