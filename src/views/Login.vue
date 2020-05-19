@@ -3,7 +3,7 @@
 		<div class="auth-left"></div>
 		<div class="auth-right">
 			<b-icon-star-half class="h1 my-5" />
-			<SignIn />
+			<sign-in />
 		</div>
 	</div>
 </template>

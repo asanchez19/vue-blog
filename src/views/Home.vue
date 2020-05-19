@@ -2,7 +2,7 @@
 	<div>
 		<div class="container-fluid">
 			<div class="row content">
-				<Sidebar />
+				<sidebar />
 
 				<div class="col-sm-9">
 					<h4><small>MIS POSTS</small></h4>

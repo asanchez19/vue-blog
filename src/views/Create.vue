@@ -2,7 +2,7 @@
 	<div>
 		<div class="container-fluid">
 			<div class="row content">
-				<Sidebar />
+				<sidebar />
 				<div class="col-sm-9 mt-3">
 					Título:
 					<input v-model="title" type="text" class="my-3" />

@@ -1,6 +1,6 @@
 <template>
 	<div class="col-sm-3 sidenav">
-		<Logout />
+		<logout />
 		<ul class="nav nav-pills nav-stacked mt-5">
 			<li>
 				<a href.prevent="#" @click="onCreate"
