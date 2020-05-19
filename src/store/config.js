@@ -1,3 +1,6 @@
+import getters from './getters'
+import posts from './modules/posts'
+
 /**
  * Export the vuex store configuration.
  *
@@ -5,5 +8,5 @@
  */
 export default {
 	getters,
-	modules: {},
+	modules: { posts },
 }
