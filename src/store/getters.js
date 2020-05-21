@@ -1,7 +1,7 @@
 /**
  * Global store getters.
  *
- * @author Pedro Villegas <pedro.villegas@ttec.com>
+ * @author Alejandro Sanchez <rasso92@gmail.com>
  */
 export default {
 	/**
