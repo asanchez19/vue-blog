@@ -17,6 +17,8 @@ Vue.use(CKEditor)
 
 Vue.config.productionTip = false
 
+Vue.filter('toUpperCase', text => text.toUpperCase())
+
 new Vue({
 	router,
 	store,
