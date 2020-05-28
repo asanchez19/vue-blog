@@ -14,7 +14,7 @@
 						<b-icon-trash @click.prevent="onDelete(post.id)" />
 						<h5>
 							<span class="glyphicon glyphicon-time"></span> Post
-							by {{ post.displayName }}.
+							by {{ post.displayName | toUpperCase }}.
 						</h5>
 						<br />
 						<p v-html="post.post"></p>
@@ -22,7 +22,7 @@
 				</div>
 			</div>
 		</div>
-		<Footer />
+		<Footer version="2.0" @mi-emit="showMessage" />
 	</div>
 </template>
 
@@ -68,6 +68,18 @@ export default {
 		 */
 		async onDelete(id) {
 			await this.deletePost(id)
+		},
+
+		/**
+		 * Show an alert message.
+		 *
+		 * @param {String} message
+		 * @return {void}
+		 */
+		showMessage(message) {
+			console.log(message, 'alejo')
+
+			alert(message)
 		},
 
 		...mapActions({ fetchPosts: 'posts/get', deletePost: 'posts/remove' }),
